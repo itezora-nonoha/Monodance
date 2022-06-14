@@ -4,7 +4,7 @@ Dockerを用いて、WordPressとNuxt.jsのイメージを作成し、ヘッド�
 
 ## 作業手順
 
-### 1. WordPressの構築まで
+### 1. WordPressのセットアップ
 #### 1.1. リポジトリのクローン
 
 #### 1.2. ディレクトリに移動し、Dockerイメージをビルド
@@ -56,3 +56,53 @@ wp import themeunittestdata.wordpress.xml --authors=create --allow-root
 ```
 
 > 2分くらい掛かる
+
+### 3. Nuxt.jsのセットアップ
+
+#### 3.1. Node.jsのコンテナに入る
+
+``` bash
+docker-compose exec nuxtjs bash
+```
+
+#### 3.2. Nuxt.jsのインストール
+
+``` bash
+npm install create-nuxt-app
+```
+
+#### 3.3. Nuxt.jsのプロジェクトを作成
+
+``` bash
+npm init nuxt-app src
+```
+
+> (*1) `src`はディレクトリ名。
+>   設定は以下のようにした。（細かいところは煮詰めていないため、変更の余地あり）
+>   ![](2022-06-15-01-20-34.png)
+> (*2) Git Bashからコンテナに入るとうまく操作できなかったため、Docker Desktopからコンソールを立ち上げ、実行した
+> (*3) `🎉  Successfully created project wp-api-verification`が出れば完了
+> (*4) プロジェクトの作成には5～10分掛かる
+
+#### 3.4. Dockerで動かすためにコンフィグを調整
+
+- nuxt.config.js の内容に下記を追加し、別のコンテナからアクセスできるようにする
+
+``` txt
+  server: {
+    host: '0'
+  }
+```
+
+![](2022-06-15-01-26-47.png)
+
+> 参照：https://nuxtjs.org/ja/docs/features/configuration/#%E3%83%9B%E3%82%B9%E3%83%88%E3%81%A8%E3%83%9D%E3%83%BC%E3%83%88%E7%95%AA%E5%8F%B7%E3%82%92%E7%B7%A8%E9%9B%86%E3%81%99%E3%82%8B
+
+#### 3.5. Nuxt.jsアプリを実行
+
+``` bash
+cd src
+npm run dev
+```
+
+> 3分くらいで起動が完了する。停止するときはCtrl+C
