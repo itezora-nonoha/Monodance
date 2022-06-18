@@ -106,6 +106,18 @@ axiosを用いる場合は、下記も追加する。
 	],
 ```
 
+ホットリロード機能を有効にするため、下記も追加する。（Dockerを使用している場合は、追記しないとホットリロードが有効にならないため）
+
+``` txt
+  watchers: {
+    webpack: {
+      poll: true
+    }
+  },
+```
+
+> 参照：https://sunday-morning.app/posts/2020-11-30-docker-nuxt-js-hot-reload
+
 #### 3.5. Nuxt.jsアプリを実行
 
 ``` bash
