@@ -100,8 +100,7 @@ npm init nuxt-app src
 
 axiosを用いる場合は、下記も追加する。
 ``` txt
-  modules: 
-	[
+  modules: [
     "@nuxtjs/axios",
 	],
 ```
@@ -118,7 +117,13 @@ axiosを用いる場合は、下記も追加する。
 
 > 参照：https://sunday-morning.app/posts/2020-11-30-docker-nuxt-js-hot-reload
 
-#### 3.5. Nuxt.jsアプリを実行
+#### 3.5. axiosのインストール
+
+```
+npm install --save @nuxtjs/axios
+```
+
+#### 3.6. Nuxt.jsアプリを実行
 
 ``` bash
 cd src
