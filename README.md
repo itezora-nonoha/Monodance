@@ -98,6 +98,14 @@ npm init nuxt-app src
 
 > 参照：https://nuxtjs.org/ja/docs/features/configuration/#%E3%83%9B%E3%82%B9%E3%83%88%E3%81%A8%E3%83%9D%E3%83%BC%E3%83%88%E7%95%AA%E5%8F%B7%E3%82%92%E7%B7%A8%E9%9B%86%E3%81%99%E3%82%8B
 
+axiosを用いる場合は、下記も追加する。
+``` txt
+  modules: 
+	[
+    "@nuxtjs/axios",
+	],
+```
+
 #### 3.5. Nuxt.jsアプリを実行
 
 ``` bash
