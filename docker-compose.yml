@@ -2,9 +2,9 @@ version: '3.1'
 
 services:
   wordpress:
-    build: .
+    build: ./wordpress
     ports:
-      - 80:80
+      - 8080:80
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: username
@@ -20,16 +20,12 @@ services:
       MYSQL_PASSWORD: password
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql_volume/:/var/lib/mysql
   nuxtjs:
-    image: node:14
-    user: node
-    working_dir: /home/node
+    build: ./nuxtjs
     tty: true
     ports:
-      - 3333:3000
-    volumes:
-      - ./nuxt-src:/home/node/nuxt-src
+      - 80:3000
 
 volumes:
   wordpress:
