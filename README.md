@@ -24,7 +24,7 @@ docker-compose up -d --build
 #### 1.4. WordPressの初期設定をコマンドで実施
 
 ``` bash
-docker-compose exec wordpress wp core install --url=localhost --title='WordPress Sitee' --admin_user=admin --admin_email=itezora.nonoha@gmail.com --allow-root
+docker exec wordpress wp core install --url=localhost --title='WordPress Sitee' --admin_user=admin --admin_email=itezora.nonoha@gmail.com --allow-root
 ```
 
 この後、Admin Passwordが表示されるので、一応退避させておくと良いかも。
@@ -34,7 +34,7 @@ docker-compose exec wordpress wp core install --url=localhost --title='WordPress
 #### 2.1. コンテナに入る
 
 ``` bash
-docker-compose exec wordpress bash
+docker exec - it  wordpress /bin/bash
 ```
 
 #### 2.2. プラグインをインストール
